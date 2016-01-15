@@ -16,7 +16,7 @@ $(function() {
 		 * @external 'jasmine.DEFAULT_TIMEOUT_INTERVAL'
 		 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-47}
 		 */
-		jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+		jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000;
 
     /**
     * RSS Feeds
@@ -49,19 +49,20 @@ $(function() {
          * @external 'it()'
          * @see {@link http://jasmine.github.io/2.1/introduction.html#section-It&rsquo;s_Just_Functions}
          */
-        it('URLs are defined', function() {
+        it('URLs are defined and are not empty', function() {
 
-        		/** Loop through each object in the all feeds array */
-	        	for (object in allFeeds) {
+        		/** Loop through each feed object in the allFeeds array */
+        		allFeeds.forEach(function(feed) {
 	        			/**
 		        		 * @external 'expect()'
 		        		 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-Expectations}
 		        		 * @external 'toBeDefined()'
+		        		 * @external 'toBeTruthy()'
 		        		 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-Included_Matchers}
 		        		 */
-	        			expect(allFeeds[object].url).toBeDefined();
-	        			expect(allFeeds[object].url).toMatch("http://");
-	        	}
+	        			expect(feed.url).toBeDefined();
+	        			expect(feed.url).toBeTruthy();
+        		});
         });
 
         /**
@@ -70,18 +71,20 @@ $(function() {
          * @external 'it()'
          * @see {@link http://jasmine.github.io/2.1/introduction.html#section-It&rsquo;s_Just_Functions}
          */
-        it('names are defined', function() {
+        it('names are defined and are not empty', function() {
 
-        		/** Loop through each object in the all feeds array */
-	        	for (object in allFeeds) {
+						/** Loop through each feed object in the allFeeds array */
+        		allFeeds.forEach(function(feed) {
 	        			/**
 		        		 * @external 'expect()'
 		        		 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-Expectations}
 		        		 * @external 'toBeDefined()'
+		        		 * @external 'toBeTruthy()'
 		        		 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-Included_Matchers}
 		        		 */
-	        			expect(allFeeds[object].name).toBeDefined();
-	        	}
+	        			expect(feed.name).toBeDefined();
+	        			expect(feed.name).toBeTruthy();
+        		});
         });
     });
 
@@ -98,17 +101,18 @@ $(function() {
          * @external 'it()'
          * @see {@link http://jasmine.github.io/2.1/introduction.html#section-It&rsquo;s_Just_Functions}
          */
-         it('is hidden', function() {
+         it('is hidden by default', function() {
 
 	     		    /**
 	        		 * @external 'expect()'
 	        		 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-Expectations}
 	        		 * @external 'toBe()'
+	        		 * @external 'toBeTruthy()'
 	        		 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-Included_Matchers}
 	        		 * @external 'hasClass()'
 	        		 * @see {@link https://api.jquery.com/hasclass/}
 	        		 */
-	         		expect($('body').hasClass('menu-hidden')).toBe(true);
+	         		expect($('body').hasClass('menu-hidden')).toBeTruthy();
          });
 
 
@@ -122,7 +126,8 @@ $(function() {
 						 /**
 							* @external 'expect()'
 							* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Expectations}
-							* @external 'toBeDefined()'
+							* @external 'toBeTruthy()'
+		        	* @external 'toBeFalsy()'
 							* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Included_Matchers}
 							* @external 'hasClass()'
 							* @see {@link https://api.jquery.com/hasclass/}
@@ -130,10 +135,10 @@ $(function() {
 							* @see {@link https://api.jquery.com/click/}
 							*/
 							$('.menu-icon-link').click();
-							expect($('body').hasClass('menu-hidden')).toBe(false);
+							expect($('body').hasClass('menu-hidden')).toBeFalsy();
 
 							$('.menu-icon-link').click();
-							expect($('body').hasClass('menu-hidden')).toBe(true);
+							expect($('body').hasClass('menu-hidden')).toBeTruthy();
          });
     });
 
@@ -157,15 +162,10 @@ $(function() {
 	    			/**
 	     			 * LoadFeed - make a call to the application's loadFeed function.
 	     			 * @param {number}
+        		 * @external '.done()'
+        		 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-46}
 	     			 */
-	        	loadFeed(0, function() {
-
-        			/**
-        			 * @external '.done()'
-        			 * @see {@link http://jasmine.github.io/2.1/introduction.html#section-46}
-        			 */
-	        		done();
-	        	});
+	        	loadFeed(0, done);
         });
 
         /**
@@ -265,18 +265,18 @@ $(function() {
          * @external 'it()'
          * @see {@link http://jasmine.github.io/2.1/introduction.html#section-It&rsquo;s_Just_Functions}
          */
-   			it('animation is hidden by default', function() {
+   			it('is hidden by default', function() {
 
  						/**
 						* @external 'expect()'
 						* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Expectations}
-						* @external 'toBe()'
+		        * @external 'toBeTruthy()'
 						* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Included_Matchers}
 						* @external 'hasClass()'
 						* @see {@link https://api.jquery.com/hasclass/}
 						*/
-   					expect($('body').hasClass('loading-animation-hidden')).toBe(true);
-   					expect($('.loader').is(':hidden')).toBe(true);
+   					expect($('body').hasClass('loading-animation-hidden')).toBeTruthy();
+   					expect($('.loader').is(':hidden')).toBeTruthy();
    			});
 
         /**
@@ -284,19 +284,20 @@ $(function() {
          * @external 'it()'
          * @see {@link http://jasmine.github.io/2.1/introduction.html#section-It&rsquo;s_Just_Functions}
          */
-   			it('animation is visible on feed selection', function() {
+   			it('is visible on feed selection', function() {
 
 					 /**
 						* @external 'expect()'
 						* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Expectations}
-						* @external 'toBe()'
+		        * @external 'toBeTruthy()'
+		        * @external 'toBeFalsy()'
 						* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Included_Matchers}
 						* @external 'click()'
 						* @see {@link https://api.jquery.com/click/}
 						*/
    					$('.feed-list li:first-child a').click();
-   					expect($('body').hasClass('loading-animation-hidden')).toBe(false);
-   					expect($('.loader').is(':visible')).toBe(true);
+   					expect($('body').hasClass('loading-animation-hidden')).toBeFalsy();
+   					expect($('.loader').is(':visible')).toBeTruthy();
    			});
 
         /**
@@ -332,20 +333,20 @@ $(function() {
 		         * @external 'it()'
 		         * @see {@link http://jasmine.github.io/2.1/introduction.html#section-It&rsquo;s_Just_Functions}
 		         */
-		       	it('animation is hidden', function() {
+		       	it('is hidden', function() {
 
 							 /**
 								* @external 'expect()'
 								* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Expectations}
-								* @external 'toBe()'
+		        		* @external 'toBeTruthy()'
 								* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Included_Matchers}
 								* @external 'hasClass()'
 								* @see {@link https://api.jquery.com/hasclass/}
 								* @external 'is()'
 								* @see {@link http://api.jquery.com/is/}
 								*/
-		       			expect($('body').hasClass('loading-animation-hidden')).toBe(true);
-		       			expect($('.loader').is(':hidden')).toBe(true);
+		       			expect($('body').hasClass('loading-animation-hidden')).toBeTruthy();
+		       			expect($('.loader').is(':hidden')).toBeTruthy();
 		       	});
    			});
 
@@ -367,20 +368,20 @@ $(function() {
 		         * @external 'it()'
 		         * @see {@link http://jasmine.github.io/2.1/introduction.html#section-It&rsquo;s_Just_Functions}
 		         */
-		       	it('animation is hidden', function() {
+		       	it('is hidden', function() {
 
 		       		 /**
 								* @external 'expect()'
 								* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Expectations}
-								* @external 'toBe()'
+		        		* @external 'toBeTruthy()'
 								* @see {@link http://jasmine.github.io/2.1/introduction.html#section-Included_Matchers}
 								* @external 'hasClass()'
 								* @see {@link https://api.jquery.com/hasclass/}
 								* @external 'is()'
 								* @see {@link http://api.jquery.com/is/}
 								*/
-		       			expect($('body').hasClass('loading-animation-hidden')).toBe(true);
-		       			expect($('.loader').is(':hidden')).toBe(true);
+		       			expect($('body').hasClass('loading-animation-hidden')).toBeTruthy();
+		       			expect($('.loader').is(':hidden')).toBeTruthy();
 		       	});
    			});
 
