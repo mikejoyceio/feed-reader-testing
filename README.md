@@ -8,9 +8,7 @@ The task was to learn about TDD (test-driven development) by piecing together an
 
 ##Getting Started
 
-1. [Clone](https://help.github.com/articles/cloning-a-repository/) this repository to your local machine.
-
-2. Open index.html in your browser.
+Point your browser to: http://javascript-testing.mikejoyce.io/
 
 ##Additional Tests
 
