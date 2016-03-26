@@ -8,7 +8,33 @@ The task was to learn about TDD (test-driven development) by piecing together an
 
 ##Getting Started
 
-Point your browser to: http://javascript-testing.mikejoyce.io/
+######Live
+
+Point your browser to http://javascript-testing.mikejoyce.io/
+
+######Locally
+
+**1.** Clone this repo:
+
+```
+$ git clone https://github.com/mikejoyceio/javascript-testing
+````
+
+**2.** Serve the application:
+
+```
+$ python -m SimpleHTTPServer
+```
+
+Detailed Python Simple Server instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
+
+**3.** Open the application:
+
+```
+$ open "http://localhost:8000"
+```
+
+NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on port 8000 otherwise the Uber API will not return ride price estimates.
 
 ##Additional Tests
 
