@@ -34,8 +34,6 @@ Detailed Python Simple Server instructions can been found [here](https://docs.py
 $ open "http://localhost:8000"
 ```
 
-NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on port 8000 otherwise the Uber API will not return ride price estimates.
-
 ##Additional Tests
 
 An additional test suite has been added and contains specs to ensure a loading animation is visible when a feed is being loaded and hidden either when the feed loads successfully or if there is an error in the AJAX request. All of the specs in this suite will fail as this feature has yet to be implemented.
