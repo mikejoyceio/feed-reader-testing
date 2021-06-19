@@ -6,8 +6,6 @@ A [Jasmine](https://jasmine.github.io/) test suite for a web-based application t
 
 ## Getting Started
 
-###### Local
-
 ###### 1. Clone this repo
 
 ```
