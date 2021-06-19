@@ -6,10 +6,6 @@ A [Jasmine](https://jasmine.github.io/) test suite for a web-based application t
 
 ## Getting Started
 
-###### Live
-
-Point your browser to http://javascript-testing.mikejoyce.io/
-
 ###### Local
 
 ###### 1. Clone this repo
